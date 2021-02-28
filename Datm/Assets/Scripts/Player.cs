@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public float playerSpeed = 3.0f;
     public GameObject weaponHold;
-    //public bool canInteract;
     public LayerMask pickupMask;
     public Transform direction;
     Animator playerAnim;
@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //canInteract = false;
         livesText.text = "Lives: " + lives.ToString();
         playerAnim = GetComponent<Animator>();
         equippedSword = false;
@@ -71,7 +70,7 @@ public class Player : MonoBehaviour
         Vector3 dir = direction.transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(direction.transform.position, dir, out hit, 1.0f, pickupMask))
+        if (Physics.Raycast(direction.transform.position, dir, out hit, 0.7f, pickupMask))
         {
             Debug.DrawRay(direction.transform.position, dir * hit.distance, Color.yellow);
 
@@ -79,6 +78,7 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 //Add the weapon to the inventory
+                hit.collider.gameObject.transform.position = weaponHold.gameObject.transform.position;
                 hit.collider.gameObject.transform.parent = weaponHold.gameObject.transform;
                 //weaponHold.gameObject.transform.position = new Vector3(0.311f, 0.904f, -0.065f);
                 hit.collider.gameObject.SetActive(false);
@@ -114,8 +114,9 @@ public class Player : MonoBehaviour
                     }
                 }
             }
+        }
 
-            ////////////////Left click to attack with the equipped weapon////////////////
+        ////////////////Left click to attack with the equipped weapon////////////////
             if (Input.GetMouseButton(0))
             {
                 //Check if the player has equipped a sword
@@ -130,7 +131,6 @@ public class Player : MonoBehaviour
                     playerAnim.SetBool("EquippedGun", true);
                 }
             }
-        }
     }
 
     ////////////////Will use this temporarily for enemy collision////////////////
@@ -150,6 +150,7 @@ public class Player : MonoBehaviour
             {
                 lives = 0;
                 livesText.text = "Lives: " + lives.ToString();
+                SceneManager.LoadScene("LoseScreen");
             }
         }
     }
