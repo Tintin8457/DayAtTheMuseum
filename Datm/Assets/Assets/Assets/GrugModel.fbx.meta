@@ -6,6 +6,21 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: GrugIdle
+  - first:
+      74: 8635985461152315668
+    second: GrugRun
+  - first:
+      74: 7516564418983469761
+    second: GrugMeleeAttack
+  - first:
+      74: -1605344575949115882
+    second: GrugHoldingGun
+  - first:
+      74: 8496703416274703757
+    second: GrugStandingStill
+  - first:
+      74: 6517506589012389014
+    second: GrugHoldsGun
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -46,7 +61,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -75,7 +90,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -122,7 +137,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: GrugHoldingGun
+      name: GrugStandingStill
       takeName: Take 001
       internalID: 0
       firstFrame: 87
@@ -151,18 +166,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: GrugStandingStill
+      name: GrugHoldsGun
       takeName: Take 001
       internalID: 0
-      firstFrame: 1
-      lastFrame: 1
+      firstFrame: 87
+      lastFrame: 91
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

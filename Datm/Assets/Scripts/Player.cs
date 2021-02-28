@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject weaponHold;
     //public bool canInteract;
     public LayerMask pickupMask;
+    Animator playerAnim;
 
     [Header("Health")]
     public int lives = 3;
@@ -27,16 +28,31 @@ public class Player : MonoBehaviour
     {
         //canInteract = false;
         livesText.text = "Lives: " + lives.ToString();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Idle anim
+        //playerAnim.SetBool("notMove", false);
+
         ////////////////Player Movement////////////////
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
         transform.Translate(new Vector3(horizontal, 0, vertical) * Time.deltaTime * playerSpeed);
+
+        //Run animation
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            playerAnim.SetBool("run", true);
+        }
+
+        else
+        {
+            playerAnim.SetBool("run", false);
+        }
 
         ////////////////Project a raycast to hit a pickup item////////////////
         Vector3 dir = transform.TransformDirection(Vector3.forward);
