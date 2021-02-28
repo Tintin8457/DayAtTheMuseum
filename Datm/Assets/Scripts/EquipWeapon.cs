@@ -43,6 +43,7 @@ public class EquipWeapon : MonoBehaviour
             if (weaponUpdate.weap1.sprite == weaponUpdate.weaponImages[0])
             {
                 weapons[0].SetActive(true);
+                weaponUpdate.equippedSword = true;
                 slot1Selected = true;
 
                 button2.interactable = false;
@@ -52,6 +53,7 @@ public class EquipWeapon : MonoBehaviour
             else if (weaponUpdate.weap1.sprite == weaponUpdate.weaponImages[1])
             {
                 weapons[1].SetActive(true);
+                weaponUpdate.equippedGun = true; 
                 slot1Selected = true;
 
                 button2.interactable = false;
@@ -65,6 +67,7 @@ public class EquipWeapon : MonoBehaviour
             if (weaponUpdate.weap1.sprite == weaponUpdate.weaponImages[0])
             {
                 weapons[0].SetActive(false);
+                weaponUpdate.equippedSword = false;
                 slot1Selected = false;
 
                 button2.interactable = true;
@@ -74,6 +77,7 @@ public class EquipWeapon : MonoBehaviour
             else if (weaponUpdate.weap1.sprite == weaponUpdate.weaponImages[1])
             {
                 weapons[1].SetActive(false);
+                weaponUpdate.equippedGun = false; 
                 slot1Selected = false;
 
                 button2.interactable = true;
@@ -91,6 +95,7 @@ public class EquipWeapon : MonoBehaviour
             if (weaponUpdate.weap2.sprite == weaponUpdate.weaponImages[0])
             {
                 weapons[0].SetActive(true);
+                weaponUpdate.equippedSword = true;
                 slot2Selected = true;
 
                 button1.interactable = false;
@@ -100,6 +105,7 @@ public class EquipWeapon : MonoBehaviour
             else if (weaponUpdate.weap2.sprite == weaponUpdate.weaponImages[1])
             {
                 weapons[1].SetActive(true);
+                weaponUpdate.equippedGun = true;
                 slot2Selected = true;
 
                 button1.interactable = false;
@@ -113,6 +119,7 @@ public class EquipWeapon : MonoBehaviour
             if (weaponUpdate.weap2.sprite == weaponUpdate.weaponImages[0])
             {
                 weapons[0].SetActive(false);
+                weaponUpdate.equippedSword = false;
                 slot2Selected = false;
 
                 button1.interactable = true;
@@ -122,6 +129,7 @@ public class EquipWeapon : MonoBehaviour
             else if (weaponUpdate.weap2.sprite == weaponUpdate.weaponImages[1])
             {
                 weapons[1].SetActive(false);
+                weaponUpdate.equippedGun = false;
                 slot2Selected = false;
 
                 button1.interactable = true;

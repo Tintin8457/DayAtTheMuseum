@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject weaponHold;
     //public bool canInteract;
     public LayerMask pickupMask;
+    public Transform direction;
     Animator playerAnim;
 
     [Header("Health")]
@@ -23,12 +24,18 @@ public class Player : MonoBehaviour
     public Image weap1;
     public Image weap2;
 
+    [Header("Equipped Weapons")]
+    public bool equippedSword;
+    public bool equippedGun;
+
     // Start is called before the first frame update
     void Start()
     {
         //canInteract = false;
         livesText.text = "Lives: " + lives.ToString();
         playerAnim = GetComponent<Animator>();
+        equippedSword = false;
+        equippedGun = false;
     }
 
     // Update is called once per frame
@@ -43,30 +50,37 @@ public class Player : MonoBehaviour
 
         transform.Translate(new Vector3(horizontal, 0, vertical) * Time.deltaTime * playerSpeed);
 
-        //Run animation
+        ////////////////Animations////////////////
+        //Run with WASD
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             playerAnim.SetBool("run", true);
+            playerAnim.SetBool("EquippedGun", false);
+            playerAnim.SetBool("EquippedSword", false);
         }
 
+        //Return to default state (idle) when not moving
         else
         {
             playerAnim.SetBool("run", false);
+            playerAnim.SetBool("EquippedGun", false);
+            playerAnim.SetBool("EquippedSword", false);
         }
 
         ////////////////Project a raycast to hit a pickup item////////////////
-        Vector3 dir = transform.TransformDirection(Vector3.forward);
+        Vector3 dir = direction.transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, dir, out hit, pickupMask))
+        if (Physics.Raycast(direction.transform.position, dir, out hit, 1.0f, pickupMask))
         {
-            Debug.DrawRay(transform.position, dir * hit.distance, Color.red);
+            Debug.DrawRay(direction.transform.position, dir * hit.distance, Color.yellow);
 
             ////////////////Press E to pickup objects when a raycast has hit a pickup item////////////////
             if (Input.GetKey(KeyCode.E))
             {
                 //Add the weapon to the inventory
                 hit.collider.gameObject.transform.parent = weaponHold.gameObject.transform;
+                //weaponHold.gameObject.transform.position = new Vector3(0.311f, 0.904f, -0.065f);
                 hit.collider.gameObject.SetActive(false);
 
                 ////////////////Update inventory with collected weapons to images////////////////
@@ -87,15 +101,33 @@ public class Player : MonoBehaviour
                 //Gun to inventory
                 if (hit.collider.gameObject.tag == "Gun")
                 {
+                    //weaponHold.gameObject.transform.position = new Vector3(0.311f, 0.904f, -0.065f);
                     if (weap1.sprite == null)
                     {
                         weap1.sprite = weaponImages[1];
+                        //hit.collider.gameObject.transform.position = new Vector3(-0.015f, -0.01f, 0.0122f);
                     }
 
                     else if (weap2.sprite == null)
                     {
                         weap2.sprite = weaponImages[1];
                     }
+                }
+            }
+
+            ////////////////Left click to attack with the equipped weapon////////////////
+            if (Input.GetMouseButton(0))
+            {
+                //Check if the player has equipped a sword
+                if (equippedSword == true)
+                {
+                    playerAnim.SetBool("EquippedSword", true);
+                }
+
+                //Check if the player has equipped a gun
+                else if (equippedGun == true)
+                {
+                    playerAnim.SetBool("EquippedGun", true);
                 }
             }
         }
