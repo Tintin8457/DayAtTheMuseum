@@ -21,41 +21,12 @@ public class Player : MonoBehaviour
     [Header("Weapon Inventory")]
     public Image weap1;
     public Image weap2;
-    public Image weap3;
-    // public Image weap4;
-    // public Image weap5;
-
-    // [Header("Collected Weapons")]
-    // public bool hasClub;
-    // public bool hasSword;  
-    // public bool hasGun;  
-    // public bool hasLauncher;
-    // public bool hasGrenade;
-
-    // [Header("Equip Weapons")]
-    // public bool equipClub;
-    // public bool equipSword;  
-    // public bool equipGun;  
-    // public bool equipLauncher;
-    // public bool equipGrenade;
 
     // Start is called before the first frame update
     void Start()
     {
         //canInteract = false;
         livesText.text = "Lives: " + lives.ToString();
-
-        // hasClub = false;
-        // hasSword = false;
-        // hasGun = false;
-        // hasLauncher = false;
-        // hasGrenade = false;
-
-        // equipClub = false;
-        // equipSword = false;
-        // equipGun = false;
-        // equipLauncher = false;
-        // equipGrenade = false;
     }
 
     // Update is called once per frame
@@ -83,72 +54,18 @@ public class Player : MonoBehaviour
                 hit.collider.gameObject.SetActive(false);
 
                 ////////////////Update inventory with collected weapons to images////////////////
-                //Club to inventory
-                if (hit.collider.gameObject.tag == "Club")
-                {
-                    if (weap1.sprite == null)
-                    {
-                        weap1.sprite = weaponImages[0];
-                        //hasClub = true;
-                    }
-
-                    else if (weap2.sprite == null)
-                    {
-                        weap2.sprite = weaponImages[0];
-                        //hasClub = true;
-                    }
-
-                    else if (weap3.sprite == null)
-                    {
-                        weap3.sprite = weaponImages[0];
-                        //hasClub = true;
-                    }
-
-                    // else if (weap4.sprite == null)
-                    // {
-                    //     weap4.sprite = weaponImages[0];
-                    //     //hasClub = true;
-                    // }
-
-                    // else if (weap5.sprite == null)
-                    // {
-                    //     weap5.sprite = weaponImages[0];
-                    //     //hasClub = true;
-                    // }
-                }
-
                 //Sword to inventory
                 if (hit.collider.gameObject.tag == "Sword")
                 {
                     if (weap1.sprite == null)
                     {
-                        weap1.sprite = weaponImages[1];
-                        //hasSword = true;
+                        weap1.sprite = weaponImages[0];
                     }
 
                     else if (weap2.sprite == null)
                     {
-                        weap2.sprite = weaponImages[1];
-                        //hasSword = true;
+                        weap2.sprite = weaponImages[0];
                     }
-
-                    else if (weap3.sprite == null)
-                    {
-                        weap3.sprite = weaponImages[1];
-                        //hasSword = true;
-                    }
-
-                    // else if (weap4.sprite == null)
-                    // {
-                    //     weap4.sprite = weaponImages[1];
-                    //     //hasSword = true;
-                    // }
-
-                    // else if (weap5.sprite == null)
-                    // {
-                    //     weap5.sprite = weaponImages[1];
-                    //     //hasSword = true;
-                    // }
                 }
 
                 //Gun to inventory
@@ -156,102 +73,14 @@ public class Player : MonoBehaviour
                 {
                     if (weap1.sprite == null)
                     {
-                        weap1.sprite = weaponImages[2];
-                        //hasGun = true;
+                        weap1.sprite = weaponImages[1];
                     }
 
                     else if (weap2.sprite == null)
                     {
-                        weap2.sprite = weaponImages[2];
-                        //hasGun = true;
+                        weap2.sprite = weaponImages[1];
                     }
-
-                    else if (weap3.sprite == null)
-                    {
-                        weap3.sprite = weaponImages[2];
-                        //hasGun = true;
-                    }
-
-                    // else if (weap4.sprite == null)
-                    // {
-                    //     weap4.sprite = weaponImages[2];
-                    //     //hasGun = true;
-                    // }
-
-                    // else if (weap5.sprite == null)
-                    // {
-                    //     weap5.sprite = weaponImages[2];
-                    //     //hasGun = true;
-                    // }
                 }
-
-                //Rocket Launcher to inventory
-                // if (hit.collider.gameObject.tag == "RocketLauncher")
-                // {
-                //     if (weap1.sprite == null)
-                //     {
-                //         weap1.sprite = weaponImages[3];
-                //         //hasLauncher = true;
-                //     }
-
-                //     else if (weap2.sprite == null)
-                //     {
-                //         weap2.sprite = weaponImages[3];
-                //         //hasLauncher = true;
-                //     }
-
-                //     else if (weap3.sprite == null)
-                //     {
-                //         weap3.sprite = weaponImages[3];
-                //         //hasLauncher = true;
-                //     }
-
-                //     else if (weap4.sprite == null)
-                //     {
-                //         weap4.sprite = weaponImages[3];
-                //         //hasLauncher = true;
-                //     }
-
-                //     else if (weap5.sprite == null)
-                //     {
-                //         weap5.sprite = weaponImages[3];
-                //         //hasLauncher = true;
-                //     }
-                // }
-
-                //Grenade to inventory
-                // if (hit.collider.gameObject.tag == "Grenade")
-                // {
-                //     if (weap1.sprite == null)
-                //     {
-                //         weap1.sprite = weaponImages[4];
-                //         //hasGrenade = true;
-                //     }
-
-                //     else if (weap2.sprite == null)
-                //     {
-                //         weap2.sprite = weaponImages[4];
-                //         //hasGrenade = true;
-                //     }
-
-                //     else if (weap3.sprite == null)
-                //     {
-                //         weap3.sprite = weaponImages[4];
-                //         //hasGrenade = true;
-                //     }
-
-                //     else if (weap4.sprite == null)
-                //     {
-                //         weap4.sprite = weaponImages[4];
-                //         //hasGrenade = true;
-                //     }
-
-                //     else if (weap5.sprite == null)
-                //     {
-                //         weap5.sprite = weaponImages[4];
-                //         //hasGrenade = true;
-                //     }
-                // }
             }
         }
     }

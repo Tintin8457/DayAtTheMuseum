@@ -19,6 +19,7 @@ public class CameraFollow : MonoBehaviour
     {
         //Look around
         float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
+        float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
         player.transform.Rotate(0, horizontal, 0);
 
         //Follow the player and move camera
